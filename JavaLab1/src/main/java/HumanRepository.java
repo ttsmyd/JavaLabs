@@ -33,8 +33,8 @@ public class HumanRepository {
         for (int i = indexOfElement; i < indexOfNextEmptyElement - 1; i++) {
             repository[i] = repository[i + 1];
         }
-        repository[indexOfNextEmptyElement - 1] = null;
         indexOfNextEmptyElement--;
+        repository[indexOfNextEmptyElement] = null;
 
         if (repository.length/indexOfNextEmptyElement >= 2) {
             repository = decreaseMassive();
