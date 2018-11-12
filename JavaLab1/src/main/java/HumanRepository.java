@@ -1,10 +1,24 @@
-import java.util.Arrays;
+/**
+ * Сохраняет, хранит, удаляет и предоставляет классы типа
+ * @link Human
+ * @author Tochilin Dmitry
+ * @version 1.0
+ */
 
 public class HumanRepository {
+    /** Свойство - список людей.
+     Хранит все добавленные в класс данные
+     */
     private Human[] repository = new Human[10];
+
+    /** Свойство - номер следующего элемента, доступного к заполнению
+     Хранит первое пустое поле в
+     @link Human
+     */
     private int indexOfNextEmptyElement = 0;
 
-
+    /**Функция добавления элемента {@link HumanRepository#repository}
+     */
     public  void addHuman(int indexOfElement, Human humanToAdd) {
         checkIndexToNotEmptyElementsInRepository(indexOfElement);
         if (indexOfElement == indexOfNextEmptyElement) {
@@ -19,17 +33,24 @@ public class HumanRepository {
         }
     }
 
+    /**Функция добавления элемента {@link HumanRepository#repository}
+     */
     public void addHuman(Human humanToAdd) {
         checkSizeMassiveToIncrease();
         repository[indexOfNextEmptyElement] = humanToAdd;
         indexOfNextEmptyElement++;
     }
 
+    /** Функция получения элемента {@link HumanRepository#repository}
+     * @return объект человека
+     */
     public Human getHuman(int indexOfElement) {
         checkIndexToNotEmptyElementsInRepository(indexOfElement);
         return repository[indexOfElement];
     }
 
+    /** Функция удаления элемента для массива {@link HumanRepository#repository}
+     */
     public void deleteHuman(int indexOfElement) {
         checkIndexToNotEmptyElementsInRepository(indexOfElement);
         for (int i = indexOfElement; i < indexOfNextEmptyElement - 1; i++) {
@@ -40,25 +61,35 @@ public class HumanRepository {
         checkSizeMassiveToDecrease();
     }
 
-
+    /** Функция проверки на запрос пустого элемента {@link HumanRepository#repository}
+     * Функция проверяет, находится ли индекс запрашиваемого объекта в диапазоне текущих значений репозитория.
+     * @throws ArrayIndexOutOfBoundsException
+     */
     private void checkIndexToNotEmptyElementsInRepository(int indexOfElement) {
         if (indexOfElement > indexOfNextEmptyElement) {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
 
+    /** Функция проверки на необходимость увеличения для увеличения {@link HumanRepository#repository}
+     */
     private void checkSizeMassiveToIncrease(){
         if (indexOfNextEmptyElement == (repository.length - 1)) {
             repository = increaseMassive();
         }
     }
 
+    /** Функция проверки на необходимость уменьшения для массива {@link HumanRepository#repository}
+     */
     private void checkSizeMassiveToDecrease() {
         if ((indexOfNextEmptyElement != 0) && (repository.length / indexOfNextEmptyElement >= 4)) {
             repository = decreaseMassive();
         }
     }
 
+    /** Функция для увеличения массива {@link HumanRepository#repository}
+     * @return Возвращает массив нового размера
+     */
     private Human[] increaseMassive(){
         Human[] newRepository = new Human[repository.length*2];
         for (int i = 0; i < repository.length - 1; i++) {
@@ -67,6 +98,9 @@ public class HumanRepository {
         return newRepository;
     }
 
+    /** Функция для уменьшения массива {@link HumanRepository#repository}
+     * @return Возвращает массив нового размера
+     */
     private Human[] decreaseMassive() {
         Human[] newRepository = new Human[indexOfNextEmptyElement];
         for (int i = 0; i < indexOfNextEmptyElement; i++) {
@@ -75,10 +109,16 @@ public class HumanRepository {
         return newRepository;
     }
 
+    /** Функция для получения значения поля {@link HumanRepository#repository}
+     * @return Возвращает массив со всеми людьми
+     */
     public Human[] getRepository() {
         return repository;
     }
 
+    /** Функция для получения значения поля {@link HumanRepository#indexOfNextEmptyElement}
+     * @return Возвращает номер следующего элемента, доступного к заполнению
+     */
     public int getIndexOfNextEmptyElement() {
         return indexOfNextEmptyElement;
     }

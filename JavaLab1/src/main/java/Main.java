@@ -1,3 +1,8 @@
+/** Класс служит для запуска приложения
+ * @autor Tochilin Dmitry
+ * @version 1.0
+ */
+
 public class Main {
     public static void main(String[] args) {
         Human h0 = new Human("f0", "n0", "o0", Sex.Male, "1999-04-12");
