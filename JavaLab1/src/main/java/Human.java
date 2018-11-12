@@ -116,7 +116,7 @@ public class Human {
       return  LocalDate.parse(localDate);
   }
 
-   private int countAge(LocalDate dateOfBirth) {
+    private int countAge(LocalDate dateOfBirth) {
        LocalDate now = new LocalDate();
        int yearNow = now.getYear();
        int yearOfBirth = dateOfBirth.getYear();
