@@ -1,3 +1,8 @@
+import comparators.DateOfBirthComparator;
+import sorters.BubbleSorter;
+import sorters.InsertSorter;
+import sorters.QuickSorter;
+
 /** Класс служит для запуска приложения
  * @autor Tochilin Dmitry
  * @version 1.0
@@ -36,15 +41,15 @@ public class Main {
 
         BubbleSorter bubbleSorter = new BubbleSorter();
         InsertSorter insertSorter = new InsertSorter();
+        QuickSorter quickSorter = new QuickSorter();
         DateOfBirthComparator birthComparator = new DateOfBirthComparator();
 
-     //   humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, bubbleSorter, birthComparator));
-     //   humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, insertSorter, birthComparator));
+     //     humanRepository.sortHumanRepository(humanRepository, bubbleSorter, birthComparator);
+     //   humanRepository.sortHumanRepository(humanRepository, insertSorter, birthComparator);
+         humanRepository.sortHumanRepository(humanRepository, quickSorter, birthComparator);
 
-        humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, insertSorter, birthComparator));
-
-        for(int i = 0; i < 9; i++) {
-            System.out.println(humanRepository.getHuman(i).getDateOfBirth());
+        for(int i = 0; i < 10; i++) {
+           System.out.println(humanRepository.getHuman(i).getDateOfBirth());
            System.out.println(humanRepository.getHuman(i).getDateOfBirth().isBefore(humanRepository.getHuman(i+1).getDateOfBirth()));
         }
 

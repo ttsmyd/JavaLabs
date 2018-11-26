@@ -1,3 +1,6 @@
+import comparators.*;
+import sorters.*;
+
 /**
  * Сохраняет, хранит, удаляет и предоставляет классы типа
  * @link Human
@@ -41,6 +44,10 @@ public class HumanRepository {
         indexOfNextEmptyElement++;
     }
 
+    public void replaceHuman(int indexOfElement, Human humanToReplace) {
+        repository[indexOfElement] = humanToReplace;
+
+    }
     /** Функция получения элемента {@link HumanRepository#repository}
      * @return объект человека
      */
@@ -127,12 +134,9 @@ public class HumanRepository {
         return indexOfNextEmptyElement;
     }
 
-    public Human[] sortHumanRepository(HumanRepository humanRepository, Sorter sorter, Comparator comparator){
-        return sorter.sort(humanRepository, comparator);
-
+    public void sortHumanRepository(HumanRepository humanRepository, Sorter sorter, Comparator comparator){
+        sorter.sort(humanRepository, comparator);
     }
 
-    public void setRepository(Human[] repository) {
-        this.repository = repository;
-    }
+
 }

@@ -1,3 +1,6 @@
+package comparators;
+import  ./src/main/java;
+
 public class AgeComparator implements Comparator<Human> {
     public int compare(Human first, Human second) {
         if(first.getAge() > second.getAge()) {

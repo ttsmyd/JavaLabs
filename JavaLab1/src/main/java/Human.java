@@ -1,4 +1,6 @@
 import org.joda.time.LocalDate;
+import org.joda.time.Period;
+
 import java.util.UUID;
 
 /** Класс служит для описания объектов Human со свойствами
@@ -168,9 +170,7 @@ public class Human {
      */
     private int countAge(LocalDate dateOfBirth) {
        LocalDate now = new LocalDate();
-       int yearNow = now.getYear();
-       int yearOfBirth = dateOfBirth.getYear();
-       int age = yearNow - yearOfBirth;
-       return age;
+       Period period = new Period(dateOfBirth, now);
+       return period.getYears();
    }
 }

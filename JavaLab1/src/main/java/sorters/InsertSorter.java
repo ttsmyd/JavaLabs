@@ -1,6 +1,7 @@
+package sorters;
+
 public class InsertSorter implements Sorter {
-    public Human[] sort(HumanRepository humanRepository, Comparator comparator) {
-        Human[] humanMassive = humanRepository.getRepository();
+    public void sort(HumanRepository humanRepository, Comparator comparator) {
         int lengthHumanMassive = humanRepository.getLengthOfRepositoryWithoutEmptyElements();
 
         Human[] destinationArray = new Human[lengthHumanMassive];
@@ -9,14 +10,14 @@ public class InsertSorter implements Sorter {
             int insertIndex = 0;
             if (destinationSize > 0) {
                 while ((insertIndex < destinationSize)
-                        && (comparator.compare(destinationArray[insertIndex], humanMassive[n]) == -1)) {
+                        && (comparator.compare(destinationArray[insertIndex], humanRepository.getHuman(n)) == -1)) {
                     insertIndex++;
                 }
             }
             for (int m = destinationSize - 1; m >= insertIndex; m--) {
                 destinationArray[m + 1] = destinationArray[m];
             }
-            destinationArray[insertIndex] = humanMassive[n];
+            destinationArray[insertIndex] = humanRepository.getHuman(n);
             destinationSize++;
         }
 
@@ -25,9 +26,8 @@ public class InsertSorter implements Sorter {
       //  }
 
         for (int i = 0; i < destinationArray.length; i++) {
-            humanMassive[i] = destinationArray[i];
+            humanRepository.replaceHuman(i, destinationArray[i]);
         }
 
-        return humanMassive;
     }
 }
