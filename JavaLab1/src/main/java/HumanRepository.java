@@ -122,4 +122,17 @@ public class HumanRepository {
     public int getIndexOfNextEmptyElement() {
         return indexOfNextEmptyElement;
     }
+
+    public int getLengthOfRepositoryWithoutEmptyElements() {
+        return indexOfNextEmptyElement;
+    }
+
+    public Human[] sortHumanRepository(HumanRepository humanRepository, Sorter sorter, Comparator comparator){
+        return sorter.sort(humanRepository, comparator);
+
+    }
+
+    public void setRepository(Human[] repository) {
+        this.repository = repository;
+    }
 }

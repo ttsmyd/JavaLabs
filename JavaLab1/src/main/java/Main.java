@@ -32,6 +32,23 @@ public class Main {
         humanRepository.addHuman(h8);
         humanRepository.addHuman(h9);
         humanRepository.addHuman(h10);
+
+
+        BubbleSorter bubbleSorter = new BubbleSorter();
+        InsertSorter insertSorter = new InsertSorter();
+        DateOfBirthComparator birthComparator = new DateOfBirthComparator();
+
+     //   humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, bubbleSorter, birthComparator));
+     //   humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, insertSorter, birthComparator));
+
+        humanRepository.setRepository(humanRepository.sortHumanRepository(humanRepository, insertSorter, birthComparator));
+
+        for(int i = 0; i < 9; i++) {
+            System.out.println(humanRepository.getHuman(i).getDateOfBirth());
+           System.out.println(humanRepository.getHuman(i).getDateOfBirth().isBefore(humanRepository.getHuman(i+1).getDateOfBirth()));
+        }
+
+
         System.out.println("Текущий размер массива в humanRepository по заполнения всех элементов массива = " + humanRepository.getRepository().length);
         System.out.println("\n\n\nВыведем весь репозиторий на экран:");
         writeOutForHumanRepository(humanRepository);
