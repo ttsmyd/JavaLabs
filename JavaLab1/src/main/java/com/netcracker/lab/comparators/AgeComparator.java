@@ -1,5 +1,5 @@
-package comparators;
-import  ./src/main/java;
+package com.netcracker.lab.comparators;
+import com.netcracker.lab.Human;
 
 public class AgeComparator implements Comparator<Human> {
     public int compare(Human first, Human second) {

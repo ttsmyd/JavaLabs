@@ -1,6 +1,5 @@
-package comparators;
-
-import comparators.Comparator;
+package com.netcracker.lab.comparators;
+import com.netcracker.lab.Human;
 
 public class PatronymicComparator implements Comparator<Human> {
     public int compare(Human first, Human second) {

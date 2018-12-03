@@ -1,4 +1,6 @@
-package sorters;
+package com.netcracker.lab.sorters;
+import com.netcracker.lab.*;
+import com.netcracker.lab.comparators.Comparator;
 
 public class BubbleSorter implements Sorter {
     public void sort(HumanRepository humanRepository, Comparator comparator) {
