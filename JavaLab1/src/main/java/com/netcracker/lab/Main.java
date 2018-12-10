@@ -4,6 +4,7 @@ import com.netcracker.lab.comparators.DateOfBirthComparator;
 import com.netcracker.lab.sorters.BubbleSorter;
 import com.netcracker.lab.sorters.InsertSorter;
 import com.netcracker.lab.sorters.QuickSorter;
+import org.apache.log4j.Logger;
 
 /** Класс служит для запуска приложения
  * @autor Tochilin Dmitry
@@ -11,6 +12,8 @@ import com.netcracker.lab.sorters.QuickSorter;
  */
 
 public class Main {
+    final static Logger logger = Logger.getLogger(Main.class);
+
     public static void main(String[] args) {
         Human h0 = new Human("f0", "n0", "o0", Sex.Male, "1999-04-12");
         Human h1 = new Human("f1", "n1", "o1", Sex.Female, "1993-06-11");
@@ -27,6 +30,8 @@ public class Main {
         Human replaceForH3 = new Human("FReplace3", "NReplace3", "PReplace3", Sex.Male, "1991-03-13");
 
 
+
+
         HumanRepository humanRepository = new HumanRepository();
         humanRepository.addHuman(h0);
         humanRepository.addHuman(h1);
@@ -39,6 +44,7 @@ public class Main {
         humanRepository.addHuman(h8);
         humanRepository.addHuman(h9);
         humanRepository.addHuman(h10);
+
 
 
         BubbleSorter bubbleSorter = new BubbleSorter();
