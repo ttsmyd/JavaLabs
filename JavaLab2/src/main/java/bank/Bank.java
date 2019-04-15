@@ -41,13 +41,18 @@ public class Bank {
 
     }
 
-    public void addCustomerToMinimalQueue(Customer customer) {
+    synchronized public void addCustomerToMinimalQueue(Customer customer) {
         int indexOfMinimalQueue = 0;
         for (int i = 1; i < queuesForServiceOperators.size(); i++) {
             if (queuesForServiceOperators.get(i).getQueue().size() < queuesForServiceOperators.get(i - 1).getQueue().size()) {
                 indexOfMinimalQueue = i;
             }
         }
+        System.out.println("Kek");
+        if (!queuesForServiceOperators.get(indexOfMinimalQueue).getQueue().isEmpty()) {
+            notify();
+        }
+        System.out.println("Kekasdas");
         queuesForServiceOperators.get(indexOfMinimalQueue).addCustomer(customer);
     }
     }

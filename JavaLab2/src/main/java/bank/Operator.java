@@ -31,11 +31,7 @@ public class Operator extends Thread {
         while (!Thread.currentThread().isInterrupted()) {
         try {
         while (queue.isEmpty()) {
-            try {
-                sleep(1);
-            } catch (InterruptedException e) {
-                throw new InterruptedException();
-            }
+          put();
         }
         Customer customer = queue.element();
             Thread.sleep(customer.getTimeOfService());
@@ -73,7 +69,13 @@ public class Operator extends Thread {
     }
 
 
-
+    private synchronized void put(){
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addCustomer(Customer customer) {
         queue.add(customer);
